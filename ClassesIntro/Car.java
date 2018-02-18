@@ -2,10 +2,15 @@ public class Car {
     String color;
 	String type;
 
+    {
+        color = "Red";
+        type = "Renault";
+    }
+
     public Car() {
 
     }
-    
+
     public Car (String color, String type) {
         this.color = color;
         this.type = type;
