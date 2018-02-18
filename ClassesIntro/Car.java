@@ -19,4 +19,9 @@ public class Car {
         String description = "This is a " + color + " " + type;
         return description;
     }
+    public static void main (String[] args) {
+        Car myCar = new Car ("Marine Blue", "Ford K+");
+        myCar.printDescription();
+        myCar.start();
+    }
 }
