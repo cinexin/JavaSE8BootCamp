@@ -42,4 +42,28 @@ public class MyDate {
 		this.day = d;
 		this.year = y;
 	}  
+	
+	/**
+	 * This method prints out to "stdout" all leap years between 1752 and 2020
+	 */
+	public static void leapYears() {
+		
+		for (int year = 1752; year <= 2020; year++) {
+			/* System.out.println("--------------------------------------------");
+			System.out.println(year + "- Divisible by 4? " + (year % 4 ==0));
+			System.out.println(year + "- Divisible by 100? " + (year % 100 ==0));
+			System.out.println(year + "- Divisible by 400? " + (year % 400 ==0));
+			System.out.println("--------------------------------------------"); */
+			if (year % 4 == 0) {
+				if (year % 100 != 0) {
+					System.out.println("The year " + year + " is a leap year");
+				} else {
+					if (year % 400 == 0) {
+						System.out.println("The year " + year + " is a leap year");
+					}
+				}
+			}
+
+		}
+	}
 }
