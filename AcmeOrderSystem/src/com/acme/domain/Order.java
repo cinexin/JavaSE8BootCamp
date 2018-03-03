@@ -27,6 +27,55 @@ public class Order {
 		return orderAmount * Order.taxRate;
 	}
 	
+	public char jobSize() {
+		if (this.quantity <= 25) {
+			return 'S';
+		} else {
+			if (this.quantity > 25 && this.quantity <= 75) {
+				return 'M';
+			} else {
+				if (this.quantity > 75 && this.quantity <= 150) {
+					return 'L';
+				} else {
+					return 'X';
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Computes the total price of the order according to formula:
+	 * Order total = order amount - discount (if applicable) + tax (if applicable)
+	 * @return the total price of the order 
+	 */
+	public double computeTotal()  {
+		double finalAmount = 0.0;
+		double orderTax = this.orderAmount > 1500 ? 0.0 : this.computeTax();
+		char orderSize = jobSize();
+		double discount = 0.0; 
+		
+		switch (orderSize) {
+			case 'S':
+				discount = 0.0;
+				break;
+			case 'M':
+				discount = 0.01;
+				break;
+			case 'L':
+				discount = 0.02;
+				break;
+			case 'X':
+				discount = 0.03;
+				break;
+			default:
+				discount = 0.0;
+				break;
+		}
+		
+		finalAmount = this.orderAmount - (this.orderAmount * discount) + orderTax;
+		return finalAmount;
+	}
+	
 	public Order(MyDate d, double amt, String c, String p, int q){
 		orderDate=d;
 		orderAmount=amt;
