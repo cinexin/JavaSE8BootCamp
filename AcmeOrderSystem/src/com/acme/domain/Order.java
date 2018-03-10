@@ -2,14 +2,104 @@ package com.acme.domain;
 import com.acme.utils.MyDate;
 
 public class Order {
-	MyDate orderDate;
-	double orderAmount = 0.00;
-	String customer;
-	String product;
-	int quantity;
+	private MyDate orderDate;
+	private double orderAmount = 0.00;
+	private String customer;
+	private String product;
+	private int quantity;
 	
-	public static double taxRate;
+	private static double taxRate;
 	
+		
+	/**
+	 * @return the orderDate
+	 */
+	public MyDate getOrderDate() {
+		return orderDate;
+	}
+
+	/**
+	 * @param orderDate the orderDate to set
+	 */
+	public void setOrderDate(MyDate orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	/**
+	 * @return the orderAmount
+	 */
+	public double getOrderAmount() {
+		return orderAmount;
+	}
+
+	/**
+	 * @param orderAmount the orderAmount to set
+	 */
+	public void setOrderAmount(double orderAmount) {
+		if (orderAmount >= 0)
+			this.orderAmount = orderAmount;
+		else {
+			System.out.println("Error: you're trying to set a negative amount, falling to default amount (0)...");
+			this.orderAmount = 0; // set a default
+		}
+	}
+
+	/**
+	 * @return the customer
+	 */
+	public String getCustomer() {
+		return customer;
+	}
+
+	/**
+	 * @param customer the customer to set
+	 */
+	public void setCustomer(String customer) {
+		this.customer = customer;
+	}
+
+	/**
+	 * @return the product
+	 */
+	public String getProduct() {
+		return product;
+	}
+
+	/**
+	 * @param product the product to set
+	 */
+	public void setProduct(String product) {
+		this.product = product;
+	}
+
+	/**
+	 * @return the quantity
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
+
+	/**
+	 * @param quantity the quantity to set
+	 */
+	public void setQuantity(int quantity) {
+		if (quantity >= 0) 
+		{
+			this.quantity = quantity;
+		} else 
+		{
+			System.out.println("Error: you're trying to assign a negative quantity. Falling to default quantity (0)");
+			this.quantity = 0;
+		}
+	}
+
+	/**
+	 * @return the taxRate
+	 */
+	public static double getTaxRate() {
+		return taxRate;
+	}
+
 	static {
 		taxRate = 0.05;
 	}
