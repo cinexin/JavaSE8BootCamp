@@ -116,4 +116,14 @@ public class Good {
 	{   
 		return volume() * weightPerUofM; 
 	}
+	
+	public final boolean canShipViaPostOffice() 
+	{
+		if (!this.isFlammable() && this.weight() < 200) {
+			return true;
+		} else {
+			return false;
+		}
+			
+	}
 }
