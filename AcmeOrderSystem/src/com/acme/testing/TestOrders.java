@@ -1,8 +1,10 @@
 package com.acme.testing;
+import com.acme.domain.Good;
 import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.domain.Order;
 import com.acme.domain.Solid;
 import com.acme.utils.MyDate;
+import com.acme.domain.Service;
 
 public class TestOrders {
 
@@ -32,7 +34,7 @@ public class TestOrders {
 		balloons.computeTax(); 
 		
 		MyDate date3 = new MyDate(5, 20, 2008); 
-		Order anotherAnvil = new Order(date3, 200, "Road Runner"); 
+		Order anotherAnvil = new Order(date3, 200, "Road Runner", s2, 0); 
 		System.out.println(anotherAnvil);
 		
 		System.out.println("The total bill for: " + anvil + " is " + anvil.computeTotal()); 
@@ -40,8 +42,14 @@ public class TestOrders {
 		
 		balloons.setQuantity(-200);
 		
-		System.out.println("The volume of the anvil is:  " + anvil.getProduct().volume()); 
+		System.out.println("The volume of the anvil is:  " + ((Good) anvil.getProduct()).volume()); 
 		System.out.println("The length of the anvil is:  " + ((Solid)anvil.getProduct()).getLength()); 
+		
+		MyDate date4 = new MyDate(4,10,2008); 
+		Service s3 = new Service("Road Runner Eradication", 14, false); 
+		Order birdEradication = new Order(date4, 20000, "Daffy Duck", s3, 1); 
+		System.out.println("The total bill for: " + birdEradication + " is "     + birdEradication.computeTotal()); 
+	
 	}
 
 }

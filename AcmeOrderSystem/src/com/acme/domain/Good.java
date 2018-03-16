@@ -8,7 +8,7 @@ package com.acme.domain;
  * Class to model the product in an order
  *
  */
-public class Good {
+public abstract class Good implements Product{
 	public enum UnitOfMeasureType {LITER, GALLON, CUBIC_METER, CUBIC_FEET}
 	
 	private String name; 
@@ -107,10 +107,8 @@ public class Good {
 		return name + "-" + modelNumber; 
 	}
 	
-	public double volume() 
-	{   
-		return 0.0; 
-	}
+	public abstract double volume(); 
+
 	
 	public double weight() 
 	{   

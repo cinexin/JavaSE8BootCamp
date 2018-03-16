@@ -6,7 +6,7 @@ public class Order {
 	private MyDate orderDate;
 	private double orderAmount = 0.00;
 	private String customer;
-	private Good product;
+	private Product product;
 	private int quantity;
 	
 	private static double taxRate;
@@ -62,14 +62,14 @@ public class Order {
 	/**
 	 * @return the product
 	 */
-	public Good getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
 	/**
 	 * @param product the product to set
 	 */
-	public void setProduct(Good product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 
@@ -167,7 +167,7 @@ public class Order {
 		return finalAmount;
 	}
 	
-	public Order(MyDate d, double amt, String c, Good p, int q){
+	public Order(MyDate d, double amt, String c, Product p, int q){
 		orderDate=d;
 		orderAmount=amt;
 		customer=c;
@@ -175,10 +175,6 @@ public class Order {
 		quantity=q;
 	}
 	
-	public Order(MyDate d, double amt, String c) {       
-		this(d,amt,c,new Good("Anvil",1,2.5,UnitOfMeasureType.LITER, false,4.5), 1);
-     
-	}
 	
 	public String toString(){
 		return quantity + " ea. " + product + " for " + customer; 
