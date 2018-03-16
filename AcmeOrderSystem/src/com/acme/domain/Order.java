@@ -8,10 +8,25 @@ public class Order {
 	private String customer;
 	private Product product;
 	private int quantity;
-	
 	private static double taxRate;
+	private static Rushable rushable;
+	
 	
 		
+	/**
+	 * @return the rushable
+	 */
+	public static Rushable getRushable() {
+		return rushable;
+	}
+
+	/**
+	 * @param rushable the rushable to set
+	 */
+	public static void setRushable(Rushable rushable) {
+		Order.rushable = rushable;
+	}
+
 	/**
 	 * @return the orderDate
 	 */
@@ -165,6 +180,14 @@ public class Order {
 		
 		finalAmount = this.orderAmount - (this.orderAmount * discount) + orderTax;
 		return finalAmount;
+	}
+	
+	public boolean isPriorityOrder() {
+		boolean priorityOrder = false;
+		if (this.rushable != null) {
+			priorityOrder = rushable.isRushable(this.orderDate, this.orderAmount);
+		}
+		return priorityOrder;
 	}
 	
 	public Order(MyDate d, double amt, String c, Product p, int q){
