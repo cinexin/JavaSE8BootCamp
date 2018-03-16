@@ -1,5 +1,4 @@
 package com.acme.domain;
-import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.utils.MyDate;
 
 public class Order {
@@ -184,7 +183,7 @@ public class Order {
 	
 	public boolean isPriorityOrder() {
 		boolean priorityOrder = false;
-		if (this.rushable != null) {
+		if (Order.rushable != null) {
 			priorityOrder = rushable.isRushable(this.orderDate, this.orderAmount);
 		}
 		return priorityOrder;
