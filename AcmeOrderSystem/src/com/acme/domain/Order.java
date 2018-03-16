@@ -1,11 +1,12 @@
 package com.acme.domain;
+import com.acme.domain.Good.UnitOfMeasureType;
 import com.acme.utils.MyDate;
 
 public class Order {
 	private MyDate orderDate;
 	private double orderAmount = 0.00;
 	private String customer;
-	private String product;
+	private Good product;
 	private int quantity;
 	
 	private static double taxRate;
@@ -61,14 +62,14 @@ public class Order {
 	/**
 	 * @return the product
 	 */
-	public String getProduct() {
+	public Good getProduct() {
 		return product;
 	}
 
 	/**
 	 * @param product the product to set
 	 */
-	public void setProduct(String product) {
+	public void setProduct(Good product) {
 		this.product = product;
 	}
 
@@ -166,7 +167,7 @@ public class Order {
 		return finalAmount;
 	}
 	
-	public Order(MyDate d, double amt, String c, String p, int q){
+	public Order(MyDate d, double amt, String c, Good p, int q){
 		orderDate=d;
 		orderAmount=amt;
 		customer=c;
@@ -175,7 +176,7 @@ public class Order {
 	}
 	
 	public Order(MyDate d, double amt, String c) {       
-		this(d,amt,c,"Anvil", 1);
+		this(d,amt,c,new Good("Anvil",1,2.5,UnitOfMeasureType.LITER, false,4.5), 1);
      
 	}
 	

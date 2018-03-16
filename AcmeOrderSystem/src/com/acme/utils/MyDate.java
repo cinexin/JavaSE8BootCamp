@@ -99,6 +99,19 @@ public class MyDate {
 		return formattedDate;
 	}
 	
+	public boolean equals(Object o) {
+		if (o instanceof MyDate) {
+			MyDate myDate = (MyDate) o;
+			if (this.getDay() == myDate.getDay() && this.getMonth() == myDate.getMonth() && this.getYear() == myDate.getYear()) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
 	// DONE: set the MyDate attributes with m, d, and y values here! 
 	public void setDate(int m, int d, int y){   
 		if (valid(d, m, y)) 

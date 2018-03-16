@@ -29,5 +29,14 @@ public class TestMyDate{
 		// MyDate.leapYears();
 		date3.setDate(13, 40, -1);
 		System.out.println(date3.toString());
+		
+		MyDate newYear = new MyDate(1,1,2009); 
+		MyDate fiscalStart = new MyDate(1,1,2009);
+		
+		if (newYear.equals(fiscalStart)) {
+			System.out.println("Dates are equal");
+		} else {
+			System.out.println("Dates are not equal");
+		}
 	}
 }
