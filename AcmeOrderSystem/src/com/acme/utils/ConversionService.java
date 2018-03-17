@@ -92,4 +92,23 @@ public class ConversionService {
 	public static int milliLiters(int liters) {
 		return liters * literToMilliliters;
 	}
+	
+	/**
+	 * 
+	 * @param kilogramValues (N values containing kgs to convert)
+	 * @return a 2-d array containing the conversions:
+	 * 	column 0: kgs
+	 * 	column 1: equivalent in pounds
+	 */
+	public static double[][] allKgToPounds(double... kilogramValues)
+	{
+		double[][] conversionTable = new double[kilogramValues.length][kilogramValues.length];
+		
+		for (int i=0; i < kilogramValues.length; i++) {
+			conversionTable[i][0] = kilogramValues[i];
+			conversionTable[i][1] = pounds(kilogramValues[i]);
+		}
+		
+		return conversionTable;
+	}
 }
