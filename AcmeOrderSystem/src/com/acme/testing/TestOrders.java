@@ -36,7 +36,7 @@ public class TestOrders {
 		anvil.computeTax(); 
 		balloons.computeTax(); 
 		
-		MyDate date3 = new MyDate(5, 20, 2008); 
+		MyDate date3 = new MyDate(1, 1, 2018); 
 		Order anotherAnvil = new Order(date3, 200, "Road Runner", s2, 0); 
 		System.out.println(anotherAnvil);
 		
@@ -75,6 +75,8 @@ public class TestOrders {
 		Order hammer = new Order( hammerDate, 10.00, "Wile E Coyote",hammerType, 10 );
 		System.out.println("Anvil isPriorityOrder: " +anvil.isPriorityOrder());
 		System.out.println("Hammer isPriorityOrder: " + hammer.isPriorityOrder());
+		
+		
 	}
 
 }

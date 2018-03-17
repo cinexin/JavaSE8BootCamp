@@ -38,5 +38,7 @@ public class TestMyDate{
 		} else {
 			System.out.println("Dates are not equal");
 		}
+		
+		MyDate.listHolidays();
 	}
 }

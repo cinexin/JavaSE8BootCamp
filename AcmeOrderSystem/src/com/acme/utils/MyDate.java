@@ -1,4 +1,7 @@
 package com.acme.utils;
+
+import java.time.LocalDate;
+
 /**
  * 
  */
@@ -11,6 +14,33 @@ public class MyDate {
 	private byte day;
 	private byte month;
 	private short year;
+	private static MyDate[] holidays;
+	
+	static {
+		int year = LocalDate.now().getYear();
+		holidays = new MyDate[6];
+		holidays[0] = new MyDate(1, 1,year);
+		holidays[1] = new MyDate(5,30,year);
+		holidays[2] = new MyDate(7,4 ,year);
+		holidays[3] = new MyDate(9,5,year);
+		holidays[4] = new MyDate(11,24,year);
+		holidays[5] = new MyDate(12,25,year);
+	}
+
+	
+	/**
+	 * @return the holidays
+	 */
+	public static MyDate[] getHolidays() {
+		return holidays;
+	}
+
+	/**
+	 * @param holidays the holidays to set
+	 */
+	public static void setHolidays(MyDate[] holidays) {
+		MyDate.holidays = holidays;
+	}
 
 	/**
 	 * @return the day
@@ -146,6 +176,12 @@ public class MyDate {
 				}
 			}
 
+		}
+	}
+	
+	public static void listHolidays()  {
+		for (MyDate day:holidays) {
+			System.out.println(day);
 		}
 	}
 }
