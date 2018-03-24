@@ -53,7 +53,12 @@ public class MyDate {
 	 * @param day the day to set
 	 */
 	public void setDay(int day) {
-		if (valid(this.day, this.month, this.year)) 
+		try {
+			valid(this.day, this.month, this.year);
+		} catch (InvalidDateException invalidDateEx) {
+			System.err.println("Attempting to set an invalid day...");
+			System.err.println(invalidDateEx.getMessage());
+		}
 		{
 			this.day = (byte) day;
 		}
@@ -87,10 +92,10 @@ public class MyDate {
 		this.year = (short) year;
 	}
 
-	private boolean valid(int day, int month, int year) {
+	private void valid(int day, int month, int year) throws InvalidDateException {
 		if (day > 31 || day <1 || month > 12 || month <1) {
 			System.out.println("Attempting to create a non-valid date " + month + "/" + day + "/" + year);
-			return false;
+			throw new InvalidDateException(day, month, year);
 		} 
 		
 		switch (month) {
@@ -98,13 +103,21 @@ public class MyDate {
 		case 6:
 		case 9:
 		case 11:
-			return (day <=30);
+			if (day > 30 ) {
+				throw new InvalidDateException(day, month, year);
+			}
 		case 2:
-			return (day <= 28 || (day ==29 && (year % 4==0)));
+			/* in case it's a leap year..*/
+			if (year%4 == 0) {
+				if (day > 29) {
+					throw new InvalidDateException(day, month, year);
+				}
+			} else { /* if year is a regular year...*/
+				if (day > 28) {
+					throw new InvalidDateException(day, month, year);
+				}
+			}
 		}
-		
-		return true;
-
 	}
 	
 	{
@@ -143,16 +156,18 @@ public class MyDate {
 	}
 	
 	// DONE: set the MyDate attributes with m, d, and y values here! 
-	public void setDate(int m, int d, int y){   
-		if (valid(d, m, y)) 
+	public void setDate(int m, int d, int y){
+		try {
+			valid(d, m, y);
+		} catch(InvalidDateException invalidDateEx) {
+			System.err.println("Attempting to set an invalid date...");
+			System.err.println(invalidDateEx.getMessage());
+		}
 		{
 			this.month = (byte) m;
 			this.day = (byte) d;
 			this.year = (short) y;
-		} else 
-		{
-			System.out.println("Error: You're trying to set an invalid date: " + m + "/" + d + "/" + y);
-		}
+		} 
 	}  
 	
 	/**
